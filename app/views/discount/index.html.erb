@@ -1,0 +1,43 @@
+<div class="sub_banner">
+	<div class="site_container">
+		<%=render :partial => "home/search" %>
+	</div>
+</div>
+
+
+
+<div class="render">
+	<div class="site_container">
+		<h2 class="text-left">Discount Pharmacy Websites</h2>
+		<%unless @websites.empty? %>
+		   <%= render :partial => 'discount/paginate' %>
+			
+			<!-- Responsive Table -->
+			<div class="table-responsive">
+				<table class="form__results">
+		        <thead>
+		          <tr>
+		            <th><%=sort_link @search,:name, "Name" %></th>
+		            <th><%=sort_link @search,:ing, "Phone Number" %></th>
+		            <th><%=sort_link @search,:country_name, "Active" %></th>
+		            <th><%=sort_link @search,:dispense, "Fees" %></th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		          <%@websites.each do |web| %>
+		            <tr>
+		              <td class="renderbd"><%= web.name %></td>
+		              <td class="renderbd"><%= web.pno %></td>
+		              <td class="renderbd"><%= web.active %></td>
+		              <td class="renderbd"><%= web.fees %></td>
+		            </tr>
+		          <%end %>
+		        </tbody>
+		      </table>
+		  </div>
+		  <%= render :partial => 'discount/paginate' %>
+		<%else %>
+		          <p>Sorry! No results found </p>
+		<%end %>
+	</div>
+</div>

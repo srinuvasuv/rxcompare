@@ -1,0 +1,101 @@
+== Prescription Savings
+
+The finished website will allow product price feeds to be uploaded from multiple sources so that visitors to the website can search for products and compare prices across all companies.
+
+Language/Framework: Ruby 2.1 on Rails 4.2 
+Database: MySQL (MariaDB 10.0.13) or convince me of an alternative 
+Full Text Searching: Sphinx, Solr or something else you might have in mind 
+HTML: must be HTML5 and CSS3 output - I can always hire someone to pretty up the UI later, but no sloppy HTML/CSS will be accepted, it needs to be reasonably well structured. 
+Language/Localization: The first version of the website will be in English (that is all that is REQUIRED for this project), but very quickly after I want to add multiple other languages such as Chinese, Arabic, French, Spanish and Japanese. So constructing the front end of the website using a templating/dictionary method that supports swapping out elements for another language is a big bonus in bidding. http://guides.rubyonrails.org/i18n.html
+
+Example websites that operate similarly (just follow a layout similar to these sites, I will be hiring a designer after this to make the design exceptional): 
+- www.goodrx.com 
+- www.pharmacychecker.com 
+- www.edrugsearch.com
+
+Administrative Area:
+
+1. Create / Edit / Delete - Websites 
+- Business Name* 
+- Website URL* 
+- Customer Service Phone Number 
+- Customer Service Fax Number 
+- Customer Service Email Address 
+- CIPA Approved (Y/N) 
+- Pharmacy Checker Approves (Y/N) 
+- VIPPS Approved (Y/N) 
+- Primary Contact Name 
+- Primary Contact Title 
+- Primary Contact Email Address 
+- Primary Contact Phone Number 
+- Active (Y/N)* 
+- Shipping Fee ($) 
+- Shipping Fee Type (text)
+
+2. Upload / Update / Delete - Website Products: Select an existing Website, and either upload a file for the first time, upload a new file which replaces the existing product list, or delete all product listings. Product listings would be uploaded as a .csv 
+Product Listing Feed: 
+- Common Brand Name* 
+- Name on Package* 
+- Active Ingredient* 
+- Generic? (Y/N)* 
+- Product Code Label (text) 
+- Product Code 
+- Rx? (Y/N)* 
+- Strength 
+- Strength Unit 
+- Quantity 
+- Quantity Unit 
+- Price 
+- Strength Free Form 
+- Special Notes or Instructions 
+- Country of Origin 
+- Country of Dispensing 
+- Landing Page URL
+
+3. Create / Edit / Delete - Individual Product Listing: Allow for creating, editing or deleting individual products that may have been uploaded for a particular company. This should be done by having a search form that uses Website Name, Common Brand Name and Name on Package as search filters to find the product effectively. Only one of those fields is required to return results (for example, just selecting a Website Name and hitting Submit would show paginated results for all products in their list of products).
+
+Front End of Website:
+
+Main Menu: Prescription Savings Finder | Discount Pharmacy Websites | About Us | My Savings Worksheet (<#items>)
+
+1. Home Page (defaults to Prescription Savings Finder page) 
+- Large search field that allows people to search by product names (like "Lipitor 10mg) 
+- filters underneath search for "[ ] Only US, Canada, UK, Australia and New Zealand - [ ] Only Approval 1 Websites - [ ] Only Approval 2 Websites" 
+- Search should use Solr / Sphinx or some other Lucene type full text search engine to find matches more effectively by combining elements of the products. For example, a person searching for Lipitor 10mg should match based on matching a combination of (Common Brand Name || Name on Package) + (Strength + Strength Units) || (Strength Free Form). Similarly if they search for lapitor 10mg it should return the results for Lipitor. 
+- List all matches with pagination of results if more than 50 results 
+- Columns: Name, Alternate Names, Country of Origin, Dispensed from Country, Prescrption Required?, Generic?, Price Per Unit, Link 
+- Name on Package + ' ' + ((Strength + Strength Unit) || Strength Free Form), Common Brand Name + ', ' + Active Ingredient, Country of Origin, Country of Dispensing, 'Yes' || 'No', 'Generic' || 'Brand', '$' + (Price/Quantity) + ' per ' + Quantity Unit, <img a link icon of some kind that uses Landing Page URL as the source, opening a new window> 
+- User should be able to order by Product Name, Price Per Unit, Country of Origin, Country of Dispensing, Generic and Rx columns. Clicking the column alternates between an ascending and descending search. 
+- user can Add a specific product to a Savings Worksheet (like a shopping cart)
+
+2. Discount Pharmacy Websites 
+- list the active Pharmacy Websites with: 
+- Business Name* 
+- Website URL* 
+- Customer Service Phone Number 
+- Customer Service Fax Number 
+- Customer Service Email Address 
+- Approval 1 (Y/N) 
+- Approval 2 (Y/N) 
+- Shipping Fee ($) 
+- Shipping Fee Type (text) 
+
+3. About Us 
+- Just put some placeholder text on here, I'll supply it during the course of the project. 
+
+4. My Savings Worksheet 
+- Act like a shopping cart. Let people add products to it, and remove products from it. Basically so they can gather some prices, then print them out for themselves. Clicking on a product in the cart would take you back to the Prescription Savings Finder with the search query equal to the Common Brand Name + (Strength + Strength Units) so that they see the product in their cart plus all other equivalent products 
+
+Footer: Browse Products | News
+
+1. Browse Products 
+- This section is meant to make a nice crawlable set of pages with product information for the search engines. Likely just present alphabet listings that Google/Bing can crawl down to individual products. Something like demonstrated on this series of pages: 
+- https://www.canadadrugs.com/products 
+- https://www.canadadrugs.com/products/alpha/a 
+- https://www.canadadrugs.com/products/abilify 
+- https://www.canadadrugs.com/products/abilify/2mg 
+
+
+2. News 
+- Just put some placeholder text in here for now. In the next phase of the project I'll be looking at aggregating google alerts into this page in an RSS feed to help people find relevant news articles where I will also add my own customer content in the form of commentary on the articles.
+

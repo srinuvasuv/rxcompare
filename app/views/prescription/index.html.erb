@@ -1,0 +1,59 @@
+<div class="sub_banner">
+	<div class="site_container">
+		<%=render :partial => "home/search" %>
+	</div>
+</div>
+
+<div class="render">
+	<div class="site_container">
+	<h2 class="text-left">Prescription Savings Finder</h2>
+  <!-- Query form -->
+  <%unless @medicines.empty? %>
+   <%= render :partial => 'prescription/paginate' %>
+   <%= render :partial => 'home/query' %>
+	<!-- Responsive Table -->
+	<div class="table-responsive">
+		<table class="form__results">
+        <thead>
+          <tr>
+            <th><%=sort_link @search,:name, "#{t 'home.nameofmed'}" %></th>
+            <th><%=sort_link @search,:ing, "#{t 'home.activeing'}" %></th>
+            <th><%=sort_link @search,:country_name, "#{t 'home.ctor'}" %></th>
+            <th><%=sort_link @search,:dispense, "#{t 'home.dis'}" %></th>
+            <th><%=sort_link @search,:rx, "#{t 'home.rx'}" %></th>
+            <th><%=sort_link @search,:generic, "#{t 'home.gen'}" %></th>
+            <th><%=sort_link @search,:price, "#{t 'home.perunit'}" %></th>
+            <th><%=sort_link @search,:buy, "#{t 'home.buy'}" %></th>
+            <th><%=t "home.add" %><br><%=t "home.worksheet" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%@medicines.each do |med| %>
+            <tr>
+              <td class="renderbd"><%= med.name %></td>
+              <td class="renderbd"><%= med.ing %></td>
+              <td class="renderbd"><%= med.country_name %></td>
+              <td class="renderbd"><%= med.dispense %></td>
+              <td class="renderbd"><%= med.rx %></td>
+              <td class="renderbd"><%= med.generic %></td>
+              <td class="renderbd">$<%=med.price %> per Tablet</td>
+              <td class="renderbd"><%=med.buy %></td>
+            	<td>
+                <%if @mycart.include?("#{med.id}")%>
+                  <a href="#"><span class="label label-success" style='cursor:pointer'>Added</span></a>
+                <%else %>
+                  <a href="<%= add_path%>?id=<%= med.id%>"><span class="label label-default" style='cursor:pointer'>Add</span></a>
+                <%end %>
+              </td>
+            </tr>
+          <%end %>
+        </tbody>
+      </table>
+  </div>
+  <%= render :partial => 'prescription/paginate' %>
+   <%else %>
+   <hr>
+          <p><i class='fa fa-warning' style='color:#f0ad4e;'></i>Sorry! No results found </p>
+    <%end %>
+	</div>
+</div>

@@ -1,0 +1,44 @@
+<footer>
+  <div class="site_container">
+    <div class="footer__top">
+    <div class="footer--boxes">
+      <h3>QUICK LINKS</h3>
+      <ul id="footer__quicklinks">
+        <li><%= link_to  I18n.t("nav.home"), root_url %></li>
+        <li><%= link_to I18n.t("nav.pres"), medicines_path %></li>
+        <li><%= link_to I18n.t("nav.dis"), discount_path  %></li>
+        <li><%= link_to I18n.t("nav.us"), aboutus_path %></li>
+        <li><%= link_to I18n.t("nav.work"), savings_path  %></li>
+      </ul>
+    </div>
+    <div class="footer--boxes">
+      <h3>
+        CONTACT US
+      </h3>
+      <p>Fusce dapibus, tellus commodo, tortor mauris condimentum utellus fermentum, porta sem malesuada magna. </p>
+      <address>
+        <strong>Moonshine</strong><br>
+        Street No: 14/05 <br>Light City, Jupiter
+        0247 541 65 87<br>
+        <abbr title="Email">Email:</abbr> support@longwave.com
+      </address>
+    </div>
+    <div class="footer--boxes">
+      <h3>GET IN TOUCH</h3>
+      <%= render :partial => "layouts/newsletter" %>
+    </div>
+    </div>
+    <hr>
+    <div class="footer__base">
+      <div class="nav__soc">
+        <ul class="footer">
+         <li><a href="#" class="facebook"><i class="fa fa-facebook fa-lg"></i></a></li>
+         <li><a href="#" class="twitter"><i class="fa fa-twitter fa-lg"></i></a></li>
+         <li><a href="#" class="googleps"><i class="fa fa-google-plus fa-lg"></i></a></li>
+         <li><a href="#" class="rss"><i class="fa fa-rss fa-lg"></i></a></li>
+        </ul>
+      </div>
+      <p>© 2014 Prescription Saving Solutions.. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,27 @@
+<div class="query_form">
+<div class="form__label">
+  Filter
+</div>  
+<div class="form__content">
+<%= search_form_for @search, :class => 'form-inline' do |f|%>
+	<div class="thr__ct">
+			<%= f.condition_fields do |c| %>
+				<div class="box">
+				<%= c.attribute_fields do |a| %>
+			 		<%= a.attribute_select({:include_blank => true}, {:class => 'form-control', :style => "height:inherit;padding:inherit"})%>
+				<%end %>
+				<%= c.predicate_select({:foo_cont => true},{ :class => 'form-control', :style => "height:inherit;padding:inherit"})%>
+				<%= c.value_fields do |v| %>
+					<%= v.text_field :value, :class => 'form-control' %>
+				<%end%>
+				</div>
+			<%end%>	
+	</div>
+	<div class="thr__gen">
+		<%= f.submit "Search", :class => 'btn'%>
+	</div>
+	
+<%end %>
+</div>
+</div>
+

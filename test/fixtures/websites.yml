@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  url: MyString
+  pno: MyString
+  faxno: MyString
+  email: MyString
+  cipa: false
+  pckr: false
+  vipps: false
+  pcname: MyString
+  pctitle: MyString
+  pcemail: MyString
+  pcphone: MyString
+  active: false
+  fees: 1
+  feetype: MyString
+
+two:
+  name: MyString
+  url: MyString
+  pno: MyString
+  faxno: MyString
+  email: MyString
+  cipa: false
+  pckr: false
+  vipps: false
+  pcname: MyString
+  pctitle: MyString
+  pcemail: MyString
+  pcphone: MyString
+  active: false
+  fees: 1
+  feetype: MyString
